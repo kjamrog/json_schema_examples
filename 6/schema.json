@@ -1,0 +1,22 @@
+[{
+        "name": "first file",
+        "type": "file"
+    },
+    {
+        "name": "first dir",
+        "type": "dir",
+        "files": [{
+                "name": "file 1",
+                "type": "file"
+            },
+            {
+                "name": "dir 2",
+                "type": "dir",
+                "files": [{
+                    "name": "file 2",
+                    "type": "file"
+                }]
+            }
+        ]
+    }
+]
