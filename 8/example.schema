@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "number"
+        },
+        "title": {
+            "type": "string"
+        },
+        "urlSlug": {
+            "type": "string"
+        },
+        "post": {
+            "type": "string"
+        }
+    },
+    "required": ["id"],
+    "base": "http://api.dashron.com/",
+    "links": [{
+        "rel": "self",
+        "href": "posts/{id}",
+        "templateRequired": ["id"]
+    }]
+}
