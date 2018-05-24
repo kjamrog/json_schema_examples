@@ -1,22 +1,32 @@
-[{
-        "name": "first file",
-        "type": "file"
-    },
-    {
-        "name": "first dir",
-        "type": "dir",
-        "files": [{
-                "name": "file 1",
-                "type": "file"
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "file": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "maxLength": 20
+                }
             },
-            {
-                "name": "dir 2",
-                "type": "dir",
-                "files": [{
-                    "name": "file 2",
-                    "type": "file"
-                }]
-            }
-        ]
-    }
-]
+            "required": ["name", "type"],
+            "oneOf": [{
+                    "properties": {
+                        "type": { "enum": ["file"] }
+                    }
+                }, {
+                    "properties": {
+                        "type": { "enum": ["dir"] },
+                        "files": {
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/file"}
+                        }
+                    },
+                    "required": ["files"]
+                }
+            ]
+        }
+    },
+    "type": "array",
+    "items": { "$ref": "#/definitions/file"}
+}
